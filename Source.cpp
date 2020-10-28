@@ -34,11 +34,18 @@ public:
 
 
 int main() {
-	{
+	/*{
 		Quadrangle q;
 		Quadrangle q1(5.1, 6, 7);
 		Quadrangle q2(q1);
-	}
+	}*/
+	Quadrangle *q = new Quadrangle;
+	Quadrangle *q1 = new Quadrangle(5.1, 6, 7);
+	Quadrangle *q2 = new Quadrangle(*q1);
+
+	delete q;
+	delete q1;
+	delete q2;
 
 	return 0;
 }
