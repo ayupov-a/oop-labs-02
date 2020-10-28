@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ protected:
 	double insc_rad;
 	double desc_rad;
 public:
+	
 	Quadrangle() {
 		cout << "Quadrangle()" << "\n\n";
 		this->area = 1;
@@ -30,7 +32,19 @@ public:
 		cout << "~Quadrangle()" << endl;
 		printf("%0.1f %0.1f %0.1f\n", area, insc_rad, desc_rad);
 	}
+	void area_increase(double areainc) {
+		area = area + areainc;
+		insc_rad = sqrt(area * 2);
+		desc_rad = sqrt(area * 4);
+	}
+	void reset();
 };
+
+void Quadrangle::reset() {
+	area = 1;
+	insc_rad = 1;
+	desc_rad = 1;
+}
 
 
 int main() {
@@ -39,13 +53,12 @@ int main() {
 		Quadrangle q1(5.1, 6, 7);
 		Quadrangle q2(q1);
 	}*/
-	Quadrangle *q = new Quadrangle;
-	Quadrangle *q1 = new Quadrangle(5.1, 6, 7);
-	Quadrangle *q2 = new Quadrangle(*q1);
+	Quadrangle *q = new Quadrangle(5.1, 6, 7);
+	q->reset();
+	q->area_increase(2);
+
 
 	delete q;
-	delete q1;
-	delete q2;
 
 	return 0;
 }
