@@ -32,18 +32,41 @@ public:
 
 void Polygon::reset() {
 	area = 1;
-
 }
 
 class Rectangle : public Polygon {
 private:
-	float side_a, side_b;
+	double side_a;
+	double side_b;
 public:
 	Rectangle() {
-
+		this->side_a = 1;
+		this->side_b = 2;
+		this->area = side_a * side_b;
+		cout << "Rectangle()" << endl;
 	}
+	Rectangle(double side_a, double side_b) {
+		this->side_a = side_a;
+		this->side_b = side_b;
+		this->area = side_a * side_b;
+		cout << "Rectangle(double side_a, double side_b)" << endl;
+	}
+	Rectangle(const Rectangle &r) {
+		this->side_a = r.side_a;
+		this->side_b = r.side_b;
+		this->area = r.area;
+		cout << "Rectangle(const Rectangle &r)" << endl;
+	}
+	~Rectangle() {
+		cout << "~Rectangle" << endl;
+	}
+	double set_perimetr();
 };
 
+double Rectangle::set_perimetr() {
+	cout << "set_perimetr" << endl;
+	return 2 * side_a + 2 * side_b;
+}
 
 int main() {
 	/*{
@@ -52,10 +75,14 @@ int main() {
 		Polygon q2(q1);
 	}*/
 	Polygon *q = new Polygon(5.1);
-	q->reset();
-	q->area_increase(2);
 
+	Rectangle r;
+	//Rectangle *r = new Rectangle(5, 7);
+	r.set_perimetr();
 
+	
+
+	//delete r;
 	delete q;
 
 	return 0;
