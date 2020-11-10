@@ -68,22 +68,36 @@ double Rectangle::set_perimetr() {
 	return 2 * side_a + 2 * side_b;
 }
 
+class Rectangle3D : public Rectangle{
+private:
+	Rectangle* rectangle;
+	double side_c;
+public:
+	Rectangle3D() {
+		rectangle = new Rectangle;
+		side_c = 1;
+		cout << "Rectangle3D()" << endl;
+	}
+	~Rectangle3D() {
+		cout << "~Rectangle3D()" << endl;
+		delete rectangle;
+	}
+
+};
+
 int main() {
 	/*{
 		Polygon q;
 		Polygon q1(5.1, 6, 7);
 		Polygon q2(q1);
 	}*/
-	Polygon *q = new Polygon(5.1);
+	//Polygon *q = new Polygon(5.1);
 
-	Rectangle r;
-	//Rectangle *r = new Rectangle(5, 7);
-	r.set_perimetr();
+	Rectangle3D *r3d = new Rectangle3D();
 
-	
 
 	//delete r;
-	delete q;
+	//delete q;
 
 	return 0;
 }
